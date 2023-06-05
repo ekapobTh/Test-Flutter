@@ -176,11 +176,8 @@ class _HomePageState extends State<HomePage> {
     final storage = FlutterSecureStorage();
     await storage.write(key: "access_token", value: parsed["data"]["token"]);
 
-    // Config.authToken = parsed["data"]["token"];
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // prefs.setString('username', userName.toLowerCase());
-    // prefs.setString('password', password);
-    // ignore: use_build_context_synchronously
+    Config.authToken = parsed["data"]["token"];
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => HomePage()),
