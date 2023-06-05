@@ -125,6 +125,7 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 20)),
                   onPressed: () {
                     print("Login");
+                    login(userNameController.text, passwordController.text);
                   },
                   style: ElevatedButton.styleFrom(
                       primary: appRedColor,
@@ -152,11 +153,12 @@ class _HomePageState extends State<HomePage> {
   Future login(String userName, String password) async {
     if (userName.isEmpty || password.isEmpty) {
       ShowErrorDialog();
-      print("EIEI");
       return;
     }
+    String api = '${Config.apiEndpoint}login';
+    print('${api}');
     final response = await http.post(
-      Uri.parse('${Config.apiEndpoint}login'),
+      Uri.parse(api),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
