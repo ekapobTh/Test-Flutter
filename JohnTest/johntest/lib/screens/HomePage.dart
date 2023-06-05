@@ -144,39 +144,39 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Future login(String userName, String password) async {
-  //   if (userName.isEmpty || password.isEmpty) {
-  //     ShowErrorDialog();
-  //     print("EIEI");
-  //     return;
-  //   }
-  //   final response = await http.post(
-  //     Uri.parse('${Config.apiEndpoint}login'),
-  //     headers: <String, String>{
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //     body: jsonEncode(<String, String>{
-  //       'username': userName.toLowerCase(),
-  //       'password': password,
-  //     }),
-  //   );
-  //   print(response.statusCode);
-  //   if (response.statusCode != 200) {
-  //     ShowErrorDialog();
-  //     return;
-  //   }
-  //   final Map parsed = json.decode(response.body);
-  //   final storage = FlutterSecureStorage();
-  //   await storage.write(key: "access_token", value: parsed["data"]["token"]);
+  Future login(String userName, String password) async {
+    if (userName.isEmpty || password.isEmpty) {
+      ShowErrorDialog();
+      print("EIEI");
+      return;
+    }
+    final response = await http.post(
+      Uri.parse('${Config.apiEndpoint}login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'username': userName.toLowerCase(),
+        'password': password,
+      }),
+    );
+    print(response.statusCode);
+    if (response.statusCode != 200) {
+      ShowErrorDialog();
+      return;
+    }
+    final Map parsed = json.decode(response.body);
+    final storage = FlutterSecureStorage();
+    await storage.write(key: "access_token", value: parsed["data"]["token"]);
 
-  //   // Config.authToken = parsed["data"]["token"];
-  //   // SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   // prefs.setString('username', userName.toLowerCase());
-  //   // prefs.setString('password', password);
-  //   // ignore: use_build_context_synchronously
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => HomePage()),
-  //   );
-  // }
+    // Config.authToken = parsed["data"]["token"];
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // prefs.setString('username', userName.toLowerCase());
+    // prefs.setString('password', password);
+    // ignore: use_build_context_synchronously
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
 }
