@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:johntest/screens/menuPage.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
@@ -151,36 +152,36 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future login(String userName, String password) async {
-    if (userName.isEmpty || password.isEmpty) {
-      ShowErrorDialog();
-      return;
-    }
-    String api = '${Config.apiEndpoint}login';
-    print('${api}');
-    final response = await http.post(
-      Uri.parse(api),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'username': userName.toLowerCase(),
-        'password': password,
-      }),
-    );
-    print(response.statusCode);
-    if (response.statusCode != 200) {
-      ShowErrorDialog();
-      return;
-    }
-    final Map parsed = json.decode(response.body);
-    final storage = FlutterSecureStorage();
-    await storage.write(key: "access_token", value: parsed["data"]["token"]);
+    // if (userName.isEmpty || password.isEmpty) {
+    //   ShowErrorDialog();
+    //   return;
+    // }
+    // String api = '${Config.apiEndpoint}login';
+    // print('${api}');
+    // final response = await http.post(
+    //   Uri.parse(api),
+    //   headers: <String, String>{
+    //     'Content-Type': 'application/json; charset=UTF-8',
+    //   },
+    //   body: jsonEncode(<String, String>{
+    //     'username': userName.toLowerCase(),
+    //     'password': password,
+    //   }),
+    // );
+    // print(response.statusCode);
+    // if (response.statusCode != 200) {
+    //   ShowErrorDialog();
+    //   return;
+    // }
+    // final Map parsed = json.decode(response.body);
+    // final storage = FlutterSecureStorage();
+    // await storage.write(key: "access_token", value: parsed["data"]["token"]);
 
-    Config.authToken = parsed["data"]["token"];
+    // Config.authToken = parsed["data"]["token"];
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) => MenuPage()),
     );
   }
 }
