@@ -35,10 +35,12 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.red,
           centerTitle: true,
           title: const Text(
             'Home',
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 35),
+            style: const TextStyle(
+                fontWeight: FontWeight.w700, fontSize: 35, color: Colors.white),
           ),
         ),
         body: Stack(
