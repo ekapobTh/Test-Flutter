@@ -64,7 +64,7 @@ class _MenuPageState extends State<MenuPage> {
               left: 0,
               right: 0,
               child: Image.asset(
-                'assets/images/main_cover.jpg',
+                'assets/images/main_cover.png',
                 width: 50,
                 height: 120,
                 fit: BoxFit.fitWidth,
