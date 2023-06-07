@@ -37,12 +37,14 @@ class Data {
   String fullName;
   String nickname;
   String username;
+  String profilePicture;
 
   Data({
     required this.id,
     required this.fullName,
     required this.nickname,
     required this.username,
+    required this.profilePicture,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
@@ -50,6 +52,7 @@ class Data {
         fullName: json["full_name"],
         nickname: json["nickname"],
         username: json["username"],
+        profilePicture: json["profile_picture"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,5 +60,6 @@ class Data {
         "full_name": fullName,
         "nickname": nickname,
         "username": username,
+        "profile_picture": profilePicture,
       };
 }
