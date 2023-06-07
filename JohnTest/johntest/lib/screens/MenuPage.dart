@@ -58,7 +58,18 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ),
               ),
-            )
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Image.asset(
+                'assets/images/main_cover.jpg',
+                width: 50,
+                height: 120,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
           ],
         ),
         bottomNavigationBar: BottomAppBar(
