@@ -16,6 +16,8 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  final double profileHeight = 144;
+
   String _nickName = 'null';
 
   String _firstName = '';
@@ -69,6 +71,35 @@ class _MenuPageState extends State<MenuPage> {
                 height: 120,
                 fit: BoxFit.fitWidth,
               ),
+            ),
+            Positioned(
+              top: 70, // adjust the top position of the icon
+              left: 20, // adjust the left position of the icon
+              child: InkWell(
+                  child: CircleAvatar(
+                radius: 45,
+                backgroundColor: Colors.black,
+                child: _currentUser!.data.profilePicture.isNotEmpty
+                    ? CircleAvatar(
+                        backgroundColor: Colors.grey.shade800,
+                        backgroundImage: _currentUser!.data.profilePicture == ""
+                            ? null
+                            : NetworkImage(_currentUser!.data.profilePicture),
+                        radius: profileHeight / 2,
+                        child: _currentUser!.data.profilePicture == ""
+                            ? const Icon(
+                                Icons.person,
+                                color: Colors.white,
+                                size: 100,
+                              )
+                            : null,
+                      )
+                    : const Icon(
+                        Icons.person,
+                        size: 50,
+                        color: Colors.white,
+                      ),
+              )),
             ),
           ],
         ),
