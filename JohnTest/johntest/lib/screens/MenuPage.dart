@@ -19,6 +19,7 @@ class _MenuPageState extends State<MenuPage> {
   final double profileHeight = 144;
 
   String _nickName = 'null';
+  int _selectedIndex = 0;
 
   String _firstName = '';
   String _lastName = '';
@@ -103,65 +104,24 @@ class _MenuPageState extends State<MenuPage> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomAppBar(
-          // shape: CircularNotchedRectangle(),
-          height: 110,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                color: Colors.red,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.2,
-                  height: 70,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    // mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        color: Colors.white,
-                        iconSize: 26,
-                        icon: Icon(Icons.home),
-                        onPressed: () {
-                          print("home");
-                          // TODO: implement menu button functionality
-                        },
-                      ),
-                      Text(
-                        'Home',
-                        style: TextStyle(fontSize: 10, color: Colors.white),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                child: SizedBox(
-                  height: 70,
-                  width: MediaQuery.of(context).size.width / 2.2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    // mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        color: Colors.red,
-                        iconSize: 26,
-                        icon: Icon(Icons.search),
-                        onPressed: () {
-                          print("search");
-                        },
-                      ),
-                      Text(
-                        'Search',
-                        style: TextStyle(fontSize: 10, color: Colors.red),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.red,
+          type: BottomNavigationBarType.shifting,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+              backgroundColor: Colors.red,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+              backgroundColor: Colors.blue,
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.orange,
+          onTap: _onItemTapped,
         ),
       );
 
@@ -186,5 +146,11 @@ class _MenuPageState extends State<MenuPage> {
       _currentUser = user;
       setState(() => MenuPage());
     }
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }
