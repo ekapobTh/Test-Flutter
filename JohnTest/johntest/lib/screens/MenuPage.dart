@@ -105,14 +105,15 @@ class _MenuPageState extends State<MenuPage> {
         ),
         bottomNavigationBar: BottomAppBar(
           // shape: CircularNotchedRectangle(),
+          height: 110,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 color: Colors.red,
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.1,
-                  height: 60,
+                  width: MediaQuery.of(context).size.width / 2.2,
+                  height: 70,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     // mainAxisSize: MainAxisSize.min,
@@ -134,12 +135,11 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ),
               ),
-              // SizedBox(width: 130, height: 8.0),
               Container(
                 color: Colors.white,
                 child: SizedBox(
-                  height: 60,
-                  width: MediaQuery.of(context).size.width / 2.1,
+                  height: 70,
+                  width: MediaQuery.of(context).size.width / 2.2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     // mainAxisSize: MainAxisSize.min,
